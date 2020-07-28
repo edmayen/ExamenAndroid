@@ -7,6 +7,6 @@ import com.dev.examenandroid.vo.Resource
 class ColaboradorRepositoryImpl(private val dataSource: DataSource): ColaboradorRepository {
 
     override fun getColaboradorList(): Resource<List<Colaborador>> {
-        return dataSource.getColaboradoresList()
+        return dataSource.generateColaboradoresList
     }
 }

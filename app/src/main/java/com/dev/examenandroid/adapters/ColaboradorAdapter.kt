@@ -12,8 +12,14 @@ import kotlinx.android.synthetic.main.item_colaboradores.view.*
 
 class ColaboradorAdapter(
     private val context: Context,
-    private val colaboradoresList: List<Colaborador>
+    private val colaboradoresList: List<Colaborador>,
+    private val  itemClickListener: OnColaboradorCLickListener
 ): RecyclerView.Adapter<BaseViewHolder<*>>() {
+
+    interface OnColaboradorCLickListener{
+        fun onColaboradorClick(colaborador: Colaborador)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return ColaboradoresViewHolder(LayoutInflater.from(context).inflate(R.layout.item_colaboradores, parent, false))
     }
@@ -31,6 +37,7 @@ class ColaboradorAdapter(
         override fun bind(item: Colaborador, position: Int) {
             itemView.tvRvItemName.text = item.name
             itemView.tvRvItemContact.text = item.mail
+            itemView.setOnClickListener { itemClickListener.onColaboradorClick(item) }
         }
     }
 }

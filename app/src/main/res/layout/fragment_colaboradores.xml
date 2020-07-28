@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ColaboradoresFragment">
 
+    <RelativeLayout
+        android:id="@+id/progressBarColaborador"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvColaboradores"
         android:layout_width="match_parent"
