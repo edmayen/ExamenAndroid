@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginFragment">
+
+        <TextView
+            android:id="@+id/tvTittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/examen_android"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/iniciar_sesi_n"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp"
+            android:textColor="@color/md_black_1000"
+            android:autofillHints="" />
+
+
+        <EditText
+            android:id="@+id/etUser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="@string/usuario"
+            android:textColorHint="@color/md_black_1000"
+            android:drawableStart="@drawable/baseline_person_black_24"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:autofillHints=""
+            android:inputType="text"
+            android:background="@drawable/border"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="@string/contrase_a"
+            android:textColorHint="@color/md_black_1000"
+            android:drawableStart="@drawable/baseline_lock_black_24"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:autofillHints=""
+            android:inputType="textPassword"
+            android:background="@drawable/border"/>
+
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:text="@string/iniciar_sesi_n"
+            android:textColor="@color/md_black_1000"
+            android:background="@drawable/border"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_500"
+            android:layout_margin="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registrar_usuario"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp"
+            android:textColor="@color/md_black_1000"
+            android:autofillHints="" />
+
+
+        <EditText
+            android:id="@+id/etNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="@string/usuario"
+            android:textColorHint="@color/md_black_1000"
+            android:drawableStart="@drawable/baseline_person_black_24"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:autofillHints=""
+            android:inputType="text"
+            android:background="@drawable/border"/>
+
+        <EditText
+            android:id="@+id/etNewPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="@string/contrase_a"
+            android:textColorHint="@color/md_black_1000"
+            android:drawableStart="@drawable/baseline_lock_black_24"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:autofillHints=""
+            android:inputType="textPassword"
+            android:background="@drawable/border"/>
+
+
+
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:text="@string/registrar_usuario"
+            android:textColor="@color/md_black_1000"
+            android:background="@drawable/border"/>
+
+
+</LinearLayout>
