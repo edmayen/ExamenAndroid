@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.dev.examenandroid.LoginFragment"
+        android:name="com.dev.examenandroid.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.dev.examenandroid.HomeFragment"
+        android:name="com.dev.examenandroid.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/colaboradoresFragment"
-        android:name="com.dev.examenandroid.ColaboradoresFragment"
+        android:name="com.dev.examenandroid.ui.fragments.ColaboradoresFragment"
         android:label="fragment_colaboradores"
         tools:layout="@layout/fragment_colaboradores" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/addColaboradoresFragment"
-        android:name="com.dev.examenandroid.AddColaboradoresFragment"
+        android:name="com.dev.examenandroid.ui.fragments.AddColaboradoresFragment"
         android:label="fragment_add_colaboradores"
         tools:layout="@layout/fragment_add_colaboradores" >
         <action
