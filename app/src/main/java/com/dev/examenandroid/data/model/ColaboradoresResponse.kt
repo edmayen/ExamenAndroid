@@ -12,5 +12,9 @@ data class ColaboradoresResponse(
 
 data class DataList(
     @SerializedName("data")
-    val dataFile: List<Archivo>
+    val data: List<Archivo>,
+    @SerializedName("code")
+    val code: Int,
+    @SerializedName("success")
+    val success: Boolean
 )
