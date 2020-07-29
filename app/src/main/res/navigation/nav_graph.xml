@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_colaboradoresFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_colaboradoresFragment_to_detalleColaboradorFragment"
+            app:destination="@id/detalleColaboradorFragment" />
     </fragment>
     <fragment
         android:id="@+id/addColaboradoresFragment"
@@ -46,5 +49,14 @@
         <action
             android:id="@+id/action_addColaboradoresFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleColaboradorFragment"
+        android:name="com.dev.examenandroid.ui.fragments.DetalleColaboradorFragment"
+        android:label="fragment_detalle_colaborador"
+        tools:layout="@layout/fragment_detalle_colaborador" >
+        <action
+            android:id="@+id/action_detalleColaboradorFragment_to_colaboradoresFragment"
+            app:destination="@id/colaboradoresFragment" />
     </fragment>
 </navigation>

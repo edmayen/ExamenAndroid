@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -15,21 +16,21 @@ import com.dev.examenandroid.R
 import com.dev.examenandroid.adapters.ColaboradorAdapter
 import com.dev.examenandroid.data.DataSource
 import com.dev.examenandroid.data.model.Colaborador
+import com.dev.examenandroid.db.ColaboradoresDatabase
 import com.dev.examenandroid.repository.ColaboradorRepositoryImpl
 import com.dev.examenandroid.ui.viewmodel.ColaboradoresViewModel
 import com.dev.examenandroid.ui.viewmodel.ColaboradoresViewModelFactory
-import com.dev.examenandroid.vo.Resource
+import com.dev.examenandroid.util.Resource
 import kotlinx.android.synthetic.main.fragment_colaboradores.*
 
 class ColaboradoresFragment : Fragment(), ColaboradorAdapter.OnColaboradorCLickListener {
 
-    private val viewModel by viewModels<ColaboradoresViewModel> { ColaboradoresViewModelFactory(ColaboradorRepositoryImpl(
-        DataSource()
+    private val viewModel by activityViewModels<ColaboradoresViewModel> { ColaboradoresViewModelFactory(ColaboradorRepositoryImpl(
+        DataSource(ColaboradoresDatabase.invoke(requireActivity().applicationContext))
     ))}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupRecyclerView()
     }
 
     override fun onCreateView(
@@ -43,14 +44,17 @@ class ColaboradoresFragment : Fragment(), ColaboradorAdapter.OnColaboradorCLickL
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        viewModel.fetchColaboradoresList.observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getColaboradorDB().observe(viewLifecycleOwner, Observer { result ->
             when(result){
                 is Resource.Loading -> {
                     showProgressBar()
                 }
                 is Resource.Success -> {
                     hideProgressBar()
-                    rvColaboradores.adapter = ColaboradorAdapter(requireContext(), result.data, this)
+                    val lista = result.data.map {
+                        Colaborador(it.name, it.lat, it.log, it.mail)
+                    }
+                    rvColaboradores.adapter = ColaboradorAdapter(requireContext(), lista, this)
                 }
                 is Resource.Failure -> {
                     hideProgressBar()
@@ -76,8 +80,6 @@ class ColaboradoresFragment : Fragment(), ColaboradorAdapter.OnColaboradorCLickL
     override fun onColaboradorClick(colaborador: Colaborador) {
         val bundle = Bundle()
         bundle.putParcelable("colaborador", colaborador)
-        TODO("Go to maps fragment")
-        // pasar informacion a otro fragment
-        // findNavController().navigate(R.id.MAPS, bundle)
+        findNavController().navigate(R.id.detalleColaboradorFragment, bundle)
     }
 }
