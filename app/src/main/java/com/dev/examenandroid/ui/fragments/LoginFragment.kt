@@ -53,12 +53,16 @@ class LoginFragment : Fragment() {
     private fun registerUser(){
         val emailReg = etNewUser.text.toString()
         val passwordReg = etNewPassword.text.toString()
+        var isRegistered = false
         if(emailReg.isNotEmpty() && passwordReg.isNotEmpty()){
             CoroutineScope(Dispatchers.IO).launch {
                 try{
                     auth.createUserWithEmailAndPassword(emailReg, passwordReg)
                     withContext(Dispatchers.Main){
-                        checkLoggedInState()
+                        isRegistered = checkLoggedInState()
+                        if (isRegistered){
+                            Toast.makeText(requireContext(), "Usuario registrado, ahora puede iniciar sesion.", Toast.LENGTH_LONG).show()
+                        }
                     }
                 } catch (e: Exception){
                     withContext(Dispatchers.Main){
@@ -74,12 +78,16 @@ class LoginFragment : Fragment() {
     private fun loginUser(){
         val emailLogin = etUser.text.toString()
         val passwordLogin = etPassword.text.toString()
+        var isLogged = false
         if(emailLogin.isNotEmpty() && passwordLogin.isNotEmpty()){
             CoroutineScope(Dispatchers.IO).launch {
                 try{
                     auth.signInWithEmailAndPassword(emailLogin, passwordLogin)
                     withContext(Dispatchers.Main){
-                        checkLoggedInState()
+                        isLogged = checkLoggedInState()
+                        if (isLogged){
+                            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        }
                     }
                 } catch (e: Exception){
                     withContext(Dispatchers.Main){
@@ -93,13 +101,13 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun checkLoggedInState(){
+    private fun checkLoggedInState(): Boolean{
         if(auth.currentUser != null){
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            return true
         } else{
             Toast.makeText(requireContext(), "You are not logged in.", Toast.LENGTH_LONG).show()
         }
-
+        return false
     }
 
 }

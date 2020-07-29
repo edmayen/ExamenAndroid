@@ -80,6 +80,6 @@ class ColaboradoresFragment : Fragment(), ColaboradorAdapter.OnColaboradorCLickL
     override fun onColaboradorClick(colaborador: Colaborador) {
         val bundle = Bundle()
         bundle.putParcelable("colaborador", colaborador)
-        findNavController().navigate(R.id.detalleColaboradorFragment, bundle)
+        findNavController().navigate(R.id.mapsFragment, bundle)
     }
 }

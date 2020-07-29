@@ -38,8 +38,8 @@
             android:id="@+id/action_colaboradoresFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_colaboradoresFragment_to_detalleColaboradorFragment"
-            app:destination="@id/detalleColaboradorFragment" />
+            android:id="@+id/action_colaboradoresFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addColaboradoresFragment"
@@ -51,12 +51,12 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detalleColaboradorFragment"
-        android:name="com.dev.examenandroid.ui.fragments.DetalleColaboradorFragment"
-        android:label="fragment_detalle_colaborador"
-        tools:layout="@layout/fragment_detalle_colaborador" >
+        android:id="@+id/mapsFragment"
+        android:name="com.dev.examenandroid.ui.fragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
         <action
-            android:id="@+id/action_detalleColaboradorFragment_to_colaboradoresFragment"
+            android:id="@+id/action_mapsFragment_to_colaboradoresFragment"
             app:destination="@id/colaboradoresFragment" />
     </fragment>
 </navigation>
