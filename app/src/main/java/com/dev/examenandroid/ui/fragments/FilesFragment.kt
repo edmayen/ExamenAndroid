@@ -15,7 +15,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import com.dev.examenandroid.R
+import com.dev.examenandroid.data.DataSource
+import com.dev.examenandroid.data.model.ColaboradorJson
+import com.dev.examenandroid.db.ColaboradoresDatabase
+import com.dev.examenandroid.repository.ColaboradorRepositoryImpl
+import com.dev.examenandroid.ui.viewmodel.ColaboradoresViewModel
+import com.dev.examenandroid.ui.viewmodel.ColaboradoresViewModelFactory
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_files.*
 import java.io.*
 import java.util.zip.ZipEntry
@@ -24,6 +32,13 @@ import java.util.zip.ZipInputStream
 class FilesFragment : Fragment() {
 
     private val PERMISSION_REQUEST_CODE = 1234
+
+    private val viewModel by activityViewModels<ColaboradoresViewModel> { ColaboradoresViewModelFactory(
+        ColaboradorRepositoryImpl(
+            DataSource(ColaboradoresDatabase.invoke(requireActivity().applicationContext))
+        )
+    )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +94,11 @@ class FilesFragment : Fragment() {
                 showToast("File not found.")
             }
         }
+
     }
+
+
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -172,6 +191,11 @@ class FilesFragment : Fragment() {
 
     private fun parseJson(inputString: String){
         Log.d("JSON", inputString)
+        val gson = Gson()
+
+        val data = gson.fromJson(inputString, ColaboradorJson::class.java)
+        Log.d("PARSE", data.data.employees[0].name)
+
     }
 
     private fun showToast(message: String) {
