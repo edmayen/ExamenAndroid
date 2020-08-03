@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addColaboradoresFragment"
             app:destination="@id/addColaboradoresFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_filesFragment"
+            app:destination="@id/filesFragment" />
     </fragment>
     <fragment
         android:id="@+id/colaboradoresFragment"
@@ -58,5 +61,14 @@
         <action
             android:id="@+id/action_mapsFragment_to_colaboradoresFragment"
             app:destination="@id/colaboradoresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filesFragment"
+        android:name="com.dev.examenandroid.ui.fragments.FilesFragment"
+        android:label="fragment_files"
+        tools:layout="@layout/fragment_files" >
+        <action
+            android:id="@+id/action_filesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
