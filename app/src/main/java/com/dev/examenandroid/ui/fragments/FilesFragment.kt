@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.dev.examenandroid.R
 import com.dev.examenandroid.data.DataSource
+import com.dev.examenandroid.data.model.ColaboradorEntity
 import com.dev.examenandroid.data.model.ColaboradorJson
 import com.dev.examenandroid.db.ColaboradoresDatabase
 import com.dev.examenandroid.repository.ColaboradorRepositoryImpl
@@ -190,11 +191,13 @@ class FilesFragment : Fragment() {
     }
 
     private fun parseJson(inputString: String){
-        Log.d("JSON", inputString)
         val gson = Gson()
-
         val data = gson.fromJson(inputString, ColaboradorJson::class.java)
-        Log.d("PARSE", data.data.employees[0].name)
+        val employee = data.data.employees
+
+        for (data in employee){
+            viewModel.insertColaborador(ColaboradorEntity(data.id.toInt(), data.name, data.location.lat, data.location.log, data.mail))
+        }
 
     }
 
